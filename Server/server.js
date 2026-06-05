@@ -1,0 +1,32 @@
+require('dotenv').config(); 
+
+const express = require("express")
+const cors = require("cors")
+
+const app = express();
+
+const corsOptions = {
+    origin:  process.env.NODE_ENV === 'production'
+    ? 'https://billions8491.github.io' 
+    : 'http://localhost:3000',
+    methods: "GET",
+};
+
+app.use(cors(corsOptions));
+
+
+app.get("/steam-deals", async (req, res) => {
+    try {
+        const response = await fetch('https://store.steampowered.com/api/featuredcategories/?cc=us&l=english');
+        const data = await response.json();
+        res.json(data)
+    } catch(error) {
+       res.status(500).json({error: "Failed to fetch Steam data"})
+    }
+})
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(5000, () => {
+    console.log('✅ Server is fooking running on port 5000');
+});

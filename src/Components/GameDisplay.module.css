@@ -1,0 +1,133 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    height: 84%;
+    font-family: 'Oxanium';
+    color: white;
+    width: 100%;
+    
+}
+
+.pricing-and-img {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 4rem;
+}
+
+.spanSVG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
+
+.path {
+    filter:
+        drop-shadow(0 0 2px rgb(255, 0, 0)) drop-shadow(0 0 6px rgba(255, 0, 0));
+}
+
+.cyanAccent {
+    filter:
+        drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px cyan);
+}
+
+.angledDashedLine {
+    filter:
+         drop-shadow(0 0 3px rgba(255, 0, 0));
+}
+
+.pricingContainer {
+    position: relative;
+    height: 100%;
+    width: 35%;
+    padding-left: 2rem;
+}
+
+.spanContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-left: 4vw;
+    padding-top: 5.75vh;
+}
+
+span {
+    font-size: 3.5rem;
+}
+
+.discount {
+    font-size: 7vh;
+    animation: discountPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes discountPulse {
+    from {
+        text-shadow: 0 0 4px rgb(0, 175, 175), 0 0 10px rgb(0, 156, 156);
+    }
+
+    to {
+        text-shadow: 0 0 6px cyan, 0 0 14px cyan;
+    }
+}
+
+.prices {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    height: 20%;
+    width: fit-content;
+}
+
+.originalPriceContainer {
+    width: fit-content
+}
+
+.originalPrice {
+    display: block;
+    position: relative;
+    opacity: .6;
+}
+
+.originalPrice::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 110%;
+    height: 3px;
+    background-color: red;
+    transform: translateY(-50%);
+}
+
+.finalPrice {
+    display: block;
+    text-shadow: 0 0 6px white;
+    font-size: 6rem;
+}
+
+.onlyFinalPrice {
+    text-shadow: 0 0 6px white;
+    font-size: 5rem;
+}
+
+/*   GAME CARD    */
+.link {
+    width: 50%;
+    padding-right: 3rem;
+    height: fit-content;
+}
+
+.imgOverlay {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.gameCardPath {
+    filter:
+        drop-shadow(0 0 2px cyan) drop-shadow(0 0 4px rgb(0, 255, 255));
+}
+
+/***********************/

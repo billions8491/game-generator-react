@@ -1,0 +1,133 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5%;
+}
+
+.buttonsContainer {
+    display: flex;
+    width: 75%;
+    height: 80%;
+}
+
+.accentContainer {
+    width: 25%;
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.topAccent,
+.bottomAccent {
+    background: linear-gradient(90deg, 
+    rgb(200, 0, 0) 40%,
+    rgb(255, 225, 225) 50%,
+    rgba(200, 0, 0) 60%);    
+    height: 2px;
+    border-radius: 50px;
+    filter: drop-shadow(0 0 1px red) drop-shadow(0 0 4px red);
+    background-size: 260% 100%;
+}
+
+.topAccent {
+    width: 75%;
+    animation: energyPulse 15s infinite ease-in-out;
+}
+
+.bottomAccent {
+    width: 85%;
+    animation: energyPulse 15s infinite 1.5s ease-in-out;
+}
+
+@keyframes energyPulse {
+    0% {
+        background-position-x: 60rem;
+    }
+    25% {
+        background-position-x: 0rem;
+    }
+    50% {
+        background-position-x: 0rem;
+    }
+    75% {
+        background-position-x: 60rem;
+    }
+    100% {
+        background-position-x: 60rem;
+    }
+}
+
+button {
+    position: relative;
+    flex-grow: 1;
+    margin-left: 1px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: 'Orbitron';
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(234, 234, 234, 0.634);
+}
+
+button:hover {
+    color: white;
+}
+
+.button-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    z-index: -1;
+    overflow: visible;
+}
+
+.firstPolygon {
+    filter: drop-shadow( 0 0 2px red)
+}
+
+.inactiveSecondPolygon {
+    opacity: 0;
+    
+    
+    transition: 
+    opacity .125s ease-in-out
+}
+
+button:hover .inactiveSecondPolygon {
+    filter: drop-shadow(0 8px 5px rgb(0, 255, 234));
+    fill: rgb(100, 255, 235);
+    opacity: 1;
+}
+
+.isActive {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    text-shadow: 0 0 3px rgb(255, 255, 255);
+    z-index: 1;
+}
+
+.clickedAnimation {
+    animation: clickScaler .5s ease-out;
+    animation-iteration-count: 1;
+}
+
+.isClicked { 
+    
+    filter: drop-shadow(0 10px 3px rgb(255, 0, 0));
+}
+
+@keyframes clickScaler {
+    from { 
+        transform: scale(.98);
+    }
+    to {
+        transform: scale(1);
+    }
+}
