@@ -1,0 +1,322 @@
+.borderContainer {
+    position: relative;
+    padding-top: 6vh;
+    width: 30%;
+    height: 90%;
+    color: white;
+    font-family: 'Oxanium';
+    align-self: center;
+}
+
+.allInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+}
+
+.allPriceInfo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    gap: 1vh;
+}
+
+/*  SVG GROUP STYLING */
+.mainAccentSVG,
+.aboveTagsSVG,
+.mainSVG,
+.chevronSVG,
+.belowDescriptionSVG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    overflow: visible;
+}
+
+/* DISCOUNT SECTION */
+.discountContainer {
+    position: relative;
+}
+
+.discountSpan {
+    font-size: min(2.5vw, 6vh);
+    animation: discountPulse 2s ease-in-out infinite alternate;
+}
+
+/* END DISCOUNT SECTION */
+
+.outerBorderPath,
+.mainAccent {
+    fill: none;
+    stroke: rgb(255, 0, 0);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.outerBorderPath {
+    filter:
+        drop-shadow(0 0 1px rgb(255, 0, 0)) drop-shadow(0 0 3px rgb(255, 0, 0))
+}
+
+@keyframes discountPulse {
+    from {
+        text-shadow: 0 0 4px rgb(0, 175, 175), 0 0 10px rgb(0, 156, 156);
+    }
+
+    to {
+        text-shadow: 0 0 6px cyan, 0 0 14px cyan;
+    }
+}
+
+/***********************************************/
+
+.prices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    width: 100%;
+}
+
+/*********  Original Price **********************/
+
+.chevronSVG use {
+    filter: drop-shadow(0 0 4px rgb(255, 0, 0));
+}
+
+.lineThrough {
+    filter: drop-shadow(0 0 4px rgb(255, 0, 0))
+}
+
+.originalPriceContainer {
+    position: relative;
+}
+
+.originalPrice {
+    display: block;
+    position: relative;
+    font-size: min(2vw, 3.5vh);
+    opacity: .6;
+    z-index: -1;
+}
+
+/**********************************************************/
+/******* Final Price *******/
+
+.finalPrice {
+    display: block;
+    text-shadow: 0 0 6px white;
+    font-size: min(4.5vw, 6vh);
+    z-index: 9;
+}
+
+.comingSoon {
+    position: relative;
+    text-shadow: 0 0 6px white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 3vh auto;
+}
+
+.comingSoonMessage {
+    font-size: min(2.25rem, 3vh);
+}
+
+.onlyFinalPrice {
+    text-shadow: 0 0 6px white;
+    font-size: 3vw;
+    position: relative;
+    margin: 2rem 0 0;
+}
+
+/******************************/
+
+/************************ GAME INFO *****************************/
+.gameInfo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    gap: min(2.5vw, 5vh);
+}
+
+.titleAndDesc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: min(2rem, 2vh);
+}
+
+.gameTitleContainer {
+    position: relative;
+    text-wrap: balance;
+    margin-left: 1rem;
+    width: 95%;
+}
+
+.gameTitle {
+    font-size: min(1.85vw, 4.5vh);
+    text-shadow: 0 0 6px rgb(0, 208, 255);
+}
+
+.gameTitleSVGleft {
+    margin-right: -1rem;
+    display: inline-block;
+    width: min(.75vw, 1.5vh);
+    height: 8vh;
+    overflow: visible;
+}
+
+.gameTitleSVGright {
+    display: inline;
+    margin-left: -1rem;
+    width: min(.2vw, .5vh);
+    height: 1.5vh;
+    overflow: visible;
+}
+
+.titlePath {
+    filter: drop-shadow(0 0 5px cyan)
+}
+
+.description {
+    color: rgb(181, 181, 181);
+    font-size: min(.8vw, 2vh);
+}
+
+/***************           REVIEWS             ***************/
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+.logoAndReviewsContainer {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 1vw;
+}
+
+.reviewsText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+
+.reviewsText div span {
+    font-size: min(1.4vw, 2.25vh);
+}
+
+.steamLogo {
+    height: min(2vw, 5vh);
+}
+
+.reviewsPercentage {
+    color: rgb(182, 182, 182);
+    font-size: min(1vw, 1.75vh);
+}
+
+.ratingDesc {
+    font-weight: 300;
+}
+
+.overwhelminglyPositive {
+    color: rgb(107, 255, 255);
+    text-shadow: 0 0 6px rgb(58, 255, 255);
+}
+
+.veryPositive,
+.positive {
+    color: rgb(0, 224, 224)
+}
+
+.mostlyPositive {
+    color: rgb(0, 200, 200)
+}
+
+.mixed {
+    color: rgba(255, 217, 0, 0.75)
+}
+
+.aboveTagsSVGcontainer {
+    position: relative;
+    width: 100%;
+    height: 1vh;
+}
+
+/*********************   TAGS   ******************/
+
+.tagsContainer {
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: visible;
+}
+
+.tagContainer {
+    position: relative;
+    height: 3vh;
+    margin-inline: .5vw;
+    margin-bottom: 3vh;
+}
+
+.tagContainer span {
+    font-size: min(1vw, 2.5vh);
+    position: relative;
+    text-align: center;
+    border-top: 2px solid rgba(0, 255, 255, .8);
+    border-bottom: 2px solid rgba(0, 255, 255, .8);
+    padding: 1vh;
+}
+
+.tagContainer span::before,
+.tagContainer span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    pointer-events: none;
+}
+
+.tagContainer span::before {
+    top: 0;
+    box-shadow: 0 8px 18px 1px cyan;
+}
+
+.tagContainer span::after {
+    bottom: 0;
+    box-shadow:
+        0 -8px 22px 1px cyan;
+}
+
+.leftTagSVG {
+    position: absolute;
+    width: 1vw;
+    height: 105%;
+    top: -1px;
+    right: 99.5%;
+    filter: drop-shadow(0 0 8px cyan);
+}
+
+.rightTagSVG {
+    position: absolute;
+    left: 99.5%;
+    top: -1px;
+    width: 1vw;
+    height: 105%;
+    filter: drop-shadow(0 0 8px cyan);
+}

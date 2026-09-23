@@ -7,19 +7,16 @@ import { getDeals } from './helpers.js';
 function App() {
 
   const [steamData, setSteamData] = useState({});
-  const [activeCategory, setActiveCategory] = useState('Daily Deal');
-  const [activeCategoryData, setActiveCategoryData] = useState();
-  const [keys, setKeys] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('');
+  const [ currentGameIndex, setCurrentGameIndex ] = useState(0)
 
   useEffect(() => {
     getDeals().then(response => {
-
-      const activeCategoryKey = Object.keys(response).find(key => response[key].name === activeCategory)
-
-      setSteamData(response);
-      setActiveCategoryData(response[activeCategoryKey].items)
+      setSteamData(response)
     })
   }, [])
+
+
 
 
   return (
@@ -32,45 +29,25 @@ function App() {
       </div>
       <div className={styles['main-container']} >
         <svg className={styles['bg-shape']} viewBox='0 0 100 100' preserveAspectRatio='none' >
-          {/* <defs>
-            <linearGradient id="topAccentGrad" gradientUnits="userSpaceOnUse" x1="68" y1="2" x2="88" y2="2">
-              <stop offset="0%" stopColor="rgb(250, 10, 10)" />
-              <stop offset="45%" stopColor="rgb(250, 10, 10)" />
-              <stop offset="50%" stopColor="white" />
-              <stop offset="55%" stopColor="rgb(250, 10, 10)" />
-              <stop offset="100%" stopColor="rgb(250, 10, 10)" />
-              <animate attributeName='x1' values='68;88' dur='3s' repeatCount='indefinite' />
-              <animate attributeName="x2" values="88;108" dur="3s" repeatCount='indefinite' />
-            </linearGradient>
-            <linearGradient id='bottomAccentGrad' gradientUnits="userSpaceOnUse" x1='95' y1='-6.1' x2='98.5' y2='0.2' >
-              <stop offset="0%" stopColor="rgb(250, 10, 10)" />
-              <stop offset="50%" stopColor="white" />
-              <stop offset="100%" stopColor="rgb(250, 10, 10)" />
-              <animate attributeName='x1' values='95;100' dur='1.5s' repeatCount='indefinite' />
-              <animate attributeName="x2" values="98.5;102" dur="1.5s" repeatCount='indefinite' />
-            </linearGradient>
-          </defs> */}
+          <defs>
+            <pattern id='skewedDash' x="3" y="0" width="2" height="5" patternUnits="userSpaceOnUse" >
+              <polygon points="1,0 2,0 1,4 0,4" fill="rgba(255,0,0,.7" />
+            </pattern>
+          </defs>
           <path className={styles.mainPath}
             d="
-            M0,0.2
-            L99,0.2
-            L100,2
-            L100,88
-            L99,90
-            L90,90
-            L85,97
-            L21,97
-            L19,100
-            L1.6,100
-            L0,97
-            L0,0.2
+            M0,0 L100,0 L100,97 L98.5,100  L1.5,100 L0,97 L0,0
+            M0,88 L3,95 L25,95 L27,98 L97,98 L100,92
             "
-            fill="none" stroke='red' strokeWidth="2" vectorEffect="non-scaling-stroke"
+            fill="none" stroke='rgb(150,0,0)' strokeWidth="1.5" vectorEffect="non-scaling-stroke" strokeLinejoin='round' strokeLinecap='round'
           />
-
+          <path className={styles.angledDashedLine}
+          d='M5,96.5 L21.7,96.5 L22.2,98.5 L5,98.5 L5,96.5'
+          fill="url(#skewedDash)" 
+          />
         </svg>
-        <CategoryBar steamData={steamData} setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
-        <GameDisplay activeCategoryData={activeCategoryData} steamData={steamData} activeCategory={activeCategory} />
+        <CategoryBar steamData={steamData} setActiveCategory={setActiveCategory} activeCategory={activeCategory} setCurrentGameIndex={setCurrentGameIndex} />
+        <GameDisplay steamData={steamData} activeCategory={activeCategory} currentGameIndex={currentGameIndex} setCurrentGameIndex={setCurrentGameIndex} />
       </div>
     </>
   );

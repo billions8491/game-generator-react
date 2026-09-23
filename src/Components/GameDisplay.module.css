@@ -1,11 +1,10 @@
 .mainContainer {
     display: flex;
     justify-content: center;
-    height: 84%;
+    height: 98%;
     font-family: 'Oxanium';
     color: white;
-    width: 100%;
-    
+    width: 98vw;
 }
 
 .pricing-and-img {
@@ -13,7 +12,13 @@
     width: 100%;
     justify-content: space-between;
     height: 100%;
-    margin-top: 4rem;
+}
+
+.pricingContainer {
+    position: relative;
+    width: fit-content;
+    height: 75vh;
+    padding-left: 2rem;
 }
 
 .spanSVG {
@@ -23,9 +28,36 @@
     overflow: visible;
 }
 
-.path {
+.allPriceInfo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 4.5vw;
+    padding-top: 7vh;
+    width: fit-content;
+}
+
+/****** Discount text and accents **************/
+
+.discountAndAccentsContainer {
+    position: relative;
+    height: 6.5vw;
+}
+
+.discountSpan {
+    font-size: 4vw;
+    animation: discountPulse 2s ease-in-out infinite alternate;
+}
+
+.discountAccents {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    overflow: visible;
+}
+.mainAccents {
     filter:
-        drop-shadow(0 0 2px rgb(255, 0, 0)) drop-shadow(0 0 6px rgba(255, 0, 0));
+        drop-shadow(0 0 4px rgb(255, 0, 0)) 
 }
 
 .cyanAccent {
@@ -33,34 +65,6 @@
         drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px cyan);
 }
 
-.angledDashedLine {
-    filter:
-         drop-shadow(0 0 3px rgba(255, 0, 0));
-}
-
-.pricingContainer {
-    position: relative;
-    height: 100%;
-    width: 35%;
-    padding-left: 2rem;
-}
-
-.spanContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    padding-left: 4vw;
-    padding-top: 5.75vh;
-}
-
-span {
-    font-size: 3.5rem;
-}
-
-.discount {
-    font-size: 7vh;
-    animation: discountPulse 2s ease-in-out infinite alternate;
-}
 
 @keyframes discountPulse {
     from {
@@ -72,39 +76,52 @@ span {
     }
 }
 
+/***********************************************/
+
 .prices {
     display: flex;
     align-items: center;
-    gap: 4rem;
-    height: 20%;
-    width: fit-content;
+   justify-content: center;
+    gap: 4vw;
+    width: 100%;
+    height: 12vh;
+}
+
+/*********  Original Price **********************/
+
+.arrowSVG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    overflow: visible;
+}
+
+.arrow {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px orange) 
 }
 
 .originalPriceContainer {
-    width: fit-content
+   position: relative;
 }
 
 .originalPrice {
     display: block;
     position: relative;
+    font-size: 2.5vw;
     opacity: .6;
 }
+/**********************************************************/
 
-.originalPrice::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -5%;
-    width: 110%;
-    height: 3px;
-    background-color: red;
-    transform: translateY(-50%);
-}
+
+
+/******* Final Price *******/
 
 .finalPrice {
     display: block;
     text-shadow: 0 0 6px white;
-    font-size: 6rem;
+    font-size: 4vw;
 }
 
 .onlyFinalPrice {
@@ -112,10 +129,20 @@ span {
     font-size: 5rem;
 }
 
+/******************************/
+
+
 /*   GAME CARD    */
+
+.gameCardSection {
+    outline: orange 1px solid;
+    display: flex;
+}
+
 .link {
-    width: 50%;
-    padding-right: 3rem;
+    width: 45%;
+    padding-right: 2rem;
+    margin-top: 3rem;
     height: fit-content;
 }
 

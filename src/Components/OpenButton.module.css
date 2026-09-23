@@ -1,0 +1,104 @@
+.steamButton,
+.browserButton {
+    position: relative;
+    overflow: visible;
+    width: 20%;
+    height: 80%;
+}
+
+.buttonSVG {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.iconAndSpan {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.steamSpan,
+.browserSpan {
+    font-size: 75%;
+}
+
+
+/********************** Steam Button ******************************************/
+
+.steamButton:hover .steamSpan {
+    color: white;
+    text-shadow:
+        0 0 4px rgb(0, 255, 255),
+        0 0 8px rgb(0, 255, 255);
+}
+
+.steamButton:hover .steamButtonPath {
+    filter: drop-shadow(0 0 .5px cyan) drop-shadow(0 0 1.5px cyan);
+    stroke: rgb(198, 255, 255)
+}
+
+.steamButton:hover .steamImg {
+    filter: drop-shadow(0 0 5px cyan);
+}
+
+.steamButtonPath {
+    stroke: rgba(0, 255, 255, 0.7);
+    transition:
+        stroke .1s ease-in-out,
+        filter .1s ease-in-out;
+}
+
+.steamImg {
+    height: 70%;
+    transition: filter .1s ease-in-out;
+}
+
+.steamSpan {
+    color: rgb(217, 217, 217);
+    transition:
+        text-shadow .1s ease-in-out;
+}
+
+/******************************************************************************/
+
+/********************** Browser Button ****************************************/
+.browserButton:hover .browserSpan {
+    color: white;
+    text-shadow:
+        0 0 4px red,
+        0 0 8px red;
+}
+
+.browserButton:hover .browserButtonPath {
+    filter: drop-shadow(0 0 1px red) drop-shadow(0 0 2px red);
+    stroke: rgb(255, 211, 211);
+}
+
+.browserButton:hover .browserButtonIcon {
+    filter: drop-shadow(0 0 0.5rem rgb(255, 0, 0));
+}
+
+.browserButtonPath {
+    stroke: rgba(255, 0, 0, 0.829);
+    transition:
+        stroke .1s ease-in-out,
+        filter .1s ease-in-out;
+}
+
+.browserButtonIcon {
+    height: 85%;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    stroke-width: 1;
+    transition: filter .1s ease-in-out;
+}
+
+.browserSpan {
+    color: rgb(217, 217, 217);
+    transition:
+        text-shadow .1s ease-in-out;
+}

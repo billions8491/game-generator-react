@@ -1,0 +1,98 @@
+.gameCardSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    width: 70%;
+}
+
+.gameCards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4vh;
+    width: 114%;
+    height: 60%;
+    perspective: 100vh;
+}
+
+.oneGame{
+    justify-content: center;
+
+}
+
+/************************         WRAPPERS    *********************/
+
+.prevPrevWrapper {
+    transform: rotateY(124.3deg);
+    opacity: 0;
+    margin-inline-end: -12vh;
+}
+
+.previousWrapper {
+    transform: rotateY(70deg);
+    opacity: .5;
+}
+
+.currentWrapper {
+    width: 95vh;
+}
+
+.nextWrapper {
+    transform: rotateY(-70deg);
+    opacity: .5;
+}
+
+.nextNextWrapper {
+    transform: rotateY(-124.3deg);
+    opacity: 0;
+    margin-inline-start: -12vh;
+}
+
+/***********************************************************************/
+
+.outerCardContainers,
+.outerOuterCardContainers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    width: 25vh;
+}
+
+.outerCardContainers {
+    z-index: -1;
+}
+
+.outerOuterCardContainers {
+    z-index: -2;
+}
+
+.imgOverlay {
+    width:50%;
+    overflow: visible;
+}
+
+.gameCardPath {
+    filter:
+        drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px rgb(0, 255, 255));
+}
+/********************* ARROW BUTTONS *********************
+*/
+.buttonsDiv {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    overflow: visible;
+    width: 100%;
+    height: 30%;
+    position: relative;
+}

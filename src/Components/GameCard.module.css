@@ -1,0 +1,9 @@
+.imgOverlay {
+    width:100%;
+    overflow: visible;
+}
+
+.gameCardPath {
+    filter:
+        drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px rgb(0, 255, 255));
+}

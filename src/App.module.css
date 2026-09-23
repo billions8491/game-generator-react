@@ -1,32 +1,46 @@
 .header {
-    width: fit-content;
-    margin: 0 auto;
-    transform: skewX(-10deg);
+    text-align: center;
 }
 
 .redHeader,
 .cyanHeader {
-    font-size: 8rem;
+    font-size:10vh;
     font-weight: 100;
     font-family: 'SDDystopianDemo';
     color: transparent;
 }
 
 .redHeader {
-    -webkit-text-stroke: 3px rgb(235, 235, 235);
+    -webkit-text-stroke: 3px rgb(255, 255, 255);
     filter: drop-shadow(0 0 4px red) drop-shadow(0 0 10px red);
 }
 
 .cyanHeader {
-    -webkit-text-stroke: 3px rgb(235, 235, 235);
+    -webkit-text-stroke: 3px rgb(255, 255, 255);
     filter: drop-shadow(0 0 3px cyan) drop-shadow(0 0 10px cyan);
 }
 
 .main-container {
     position: relative;
-    width: 85vw;
-    height: 75vh;
-    margin: 2.5rem auto;
+    width: 99vw;
+    height: 87%;
+    margin: 0 auto
+}
+
+.main-container::before{
+    content: "";
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0, 255, 255, 0.125) 0px,
+      rgba(0, 255, 255, 0.125) 2px,
+      transparent 1px,
+      transparent 8px),
+    #000;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .3;
 }
 
 .bg-shape {
@@ -39,7 +53,18 @@
 
 .mainPath {
     filter:
-        drop-shadow(0 0 .1px rgb(255, 0, 0)) drop-shadow(0 0 .5px rgb(255, 0, 0))
+        drop-shadow(0 0 .1px rgb(255, 0, 0)) 
+}
+
+
+
+.innerUIborderPath {
+    filter:
+        drop-shadow(0 0 2px rgb(255, 0, 0)) drop-shadow(0 0 6px rgba(255, 0, 0));
+}
+.angledDashedLine {
+    filter:
+        drop-shadow(0 0 3px rgba(255, 0, 0));
 }
 
 .topAccent {
@@ -52,3 +77,4 @@
     filter:
         drop-shadow(0 0 .3px rgb(255, 0, 0))
 }
+
