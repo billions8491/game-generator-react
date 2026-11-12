@@ -8,7 +8,7 @@ function App() {
 
   const [steamData, setSteamData] = useState({});
   const [activeCategory, setActiveCategory] = useState('');
-  const [ currentGameIndex, setCurrentGameIndex ] = useState(0)
+  const [currentGameIndex, setCurrentGameIndex] = useState(0)
 
   useEffect(() => {
     getDeals().then(response => {
@@ -42,8 +42,8 @@ function App() {
             fill="none" stroke='rgb(150,0,0)' strokeWidth="1.5" vectorEffect="non-scaling-stroke" strokeLinejoin='round' strokeLinecap='round'
           />
           <path className={styles.angledDashedLine}
-          d='M5,96.5 L21.7,96.5 L22.2,98.5 L5,98.5 L5,96.5'
-          fill="url(#skewedDash)" 
+            d='M5,96.5 L21.7,96.5 L22.2,98.5 L5,98.5 L5,96.5'
+            fill="url(#skewedDash)"
           />
         </svg>
         <CategoryBar steamData={steamData} setActiveCategory={setActiveCategory} activeCategory={activeCategory} setCurrentGameIndex={setCurrentGameIndex} />

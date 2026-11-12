@@ -1,5 +1,6 @@
 .header {
     text-align: center;
+    line-height: 1.1;
 }
 
 .redHeader,
@@ -27,22 +28,6 @@
     margin: 0 auto
 }
 
-.main-container::before{
-    content: "";
-  background:
-    repeating-linear-gradient(90deg,
-      rgba(0, 255, 255, 0.125) 0px,
-      rgba(0, 255, 255, 0.125) 2px,
-      transparent 1px,
-      transparent 8px),
-    #000;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-  opacity: .3;
-}
-
 .bg-shape {
     position: absolute;
     height: 100%;
@@ -55,8 +40,6 @@
     filter:
         drop-shadow(0 0 .1px rgb(255, 0, 0)) 
 }
-
-
 
 .innerUIborderPath {
     filter:

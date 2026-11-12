@@ -188,7 +188,7 @@
 }
 
 .description {
-    color: rgb(181, 181, 181);
+    color: rgb(207, 207, 207);
     font-size: min(.8vw, 2vh);
 }
 
@@ -319,4 +319,57 @@
     width: 1vw;
     height: 105%;
     filter: drop-shadow(0 0 8px cyan);
+}
+
+.smokeClip {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    clip-path: polygon(8% 4%, 26% 4%, 28% 6%,
+            59% 6%, 60% 5%, 71% 5%,
+            72% 4%, 92% 4%, 96% 8%,
+            96% 92%, 92% 96%, 8% 96%,
+            4% 92%, 4% 8%);
+            z-index: -1;
+}
+
+.smokeClip img {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+}
+
+.smokeLayer1 {
+    animation: smokeOrbit 15s steps(10, end) infinite;
+}
+
+.smokeLayer2 {
+    animation: smokeOrbit 18s steps(12, end) infinite reverse;
+}
+
+@keyframes smokeOrbit {
+    0%, 100% { transform: translate(0%, -8%); }
+    6.25%    { transform: translate(3.06%, -7.39%); }
+    12.5%    { transform: translate(5.66%, -5.66%); }
+    18.75%   { transform: translate(7.39%, -3.06%); }
+    25%      { transform: translate(8%, 0%); }
+    31.25%   { transform: translate(7.39%, 3.06%); }
+    37.5%    { transform: translate(5.66%, 5.66%); }
+    43.75%   { transform: translate(3.06%, 7.39%); }
+    50%      { transform: translate(0%, 8%); }
+    56.25%   { transform: translate(-3.06%, 7.39%); }
+    62.5%    { transform: translate(-5.66%, 5.66%); }
+    68.75%   { transform: translate(-7.39%, 3.06%); }
+    75%      { transform: translate(-8%, 0%); }
+    81.25%   { transform: translate(-7.39%, -3.06%); }
+    87.5%    { transform: translate(-5.66%, -5.66%); }
+    93.75%   { transform: translate(-3.06%, -7.39%); }
+}
+
+@media (min-aspect-ratio: 21 / 8) {
+    .gameTitle {
+        font-size: 4vh;
+    }
 }

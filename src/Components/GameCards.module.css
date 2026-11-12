@@ -1,10 +1,53 @@
 .gameCardSection {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10vh;
+    justify-content: center;
     width: 70%;
+    height: 80%;
+    gap: 3vh;
 }
+
+
+
+/************************       HUD FRAME      ***********************************************************************************/
+
+.frameSVG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    overflow: visible;
+    filter: drop-shadow(0 0 3px cyan) drop-shadow(0 0 8px rgba(0, 255, 255, 0.685));
+}
+
+.mainFrame {
+    stroke: rgba(0,255,255,0.25);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1;
+}
+
+
+
+.boldAccents {
+    stroke-width: 5;
+    stroke: rgba(150,205,205);
+    stroke-linecap: round;
+    
+}
+
+.tickGroup path,
+.plusSymbol path,
+.boldAccents,
+.mainFrame {
+    vector-effect: non-scaling-stroke;
+    fill: none;
+}
+
+
+/*********************************************************************************************************************************/
 
 .gameCards {
     display: flex;
@@ -12,13 +55,25 @@
     align-items: center;
     gap: 4vh;
     width: 114%;
-    height: 60%;
+    margin-top: 3vh;
     perspective: 100vh;
 }
 
 .oneGame{
+    width: 42vw;
+    display: flex;
     justify-content: center;
+}
 
+.twoGames {
+    justify-content: center;
+    height: 57.5vh;
+    
+}
+
+.threeGames {
+    width: 65vw;
+    height: 40vh;
 }
 
 /************************         WRAPPERS    *********************/
@@ -31,7 +86,7 @@
 
 .previousWrapper {
     transform: rotateY(70deg);
-    opacity: .5;
+    /* opacity: .5; */
 }
 
 .currentWrapper {
@@ -40,7 +95,7 @@
 
 .nextWrapper {
     transform: rotateY(-70deg);
-    opacity: .5;
+    /* opacity: .5; */
 }
 
 .nextNextWrapper {
@@ -50,6 +105,18 @@
 }
 
 /***********************************************************************/
+
+/* ***********************   PREVIOUS/NEXT BUTTONS ********************** */
+
+.previousButton,
+.nextButton {
+    border: red 1px solid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* ********************************************************************** */
 
 .outerCardContainers,
 .outerOuterCardContainers {
@@ -62,6 +129,7 @@
 
 .outerCardContainers {
     z-index: -1;
+    position: relative;
 }
 
 .outerOuterCardContainers {
@@ -77,22 +145,49 @@
     filter:
         drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px rgb(0, 255, 255));
 }
-/********************* ARROW BUTTONS *********************
-*/
+
+
+/********************* CAROUSAL POSITION AND BUTTONS **********************/
+
+.positionAndButtons {
+    width:88%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .buttonsDiv {
     display:flex;
     justify-content: space-between;
-    align-items: center;
-    width: 85%;
+    width: 100%;
+    height: 12vh;
 }
 
-.buttonsContainer {
+.OpenButtonsContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 3rem;
     overflow: visible;
     width: 100%;
-    height: 30%;
-    position: relative;
+    height: 8vh;
+    align-self: flex-end;
+}
+
+@media (min-aspect-ratio: 21 / 8) {
+  .buttonsDiv {
+    width: 100%;
+  }
+  .gameCardSection {
+    height: 85%;
+  }
+  .gameCards {
+    perspective: 125vh;
+    width: 122%;
+    margin-top: 1vh;
+  }
+ 
+  .OpenButtonsContainer {
+    height: 10vh;
+  }
 }

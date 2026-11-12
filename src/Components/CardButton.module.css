@@ -1,0 +1,24 @@
+.cardButton,
+.svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.svg {
+    pointer-events: none;
+}
+
+.cardButton:hover + .svg .thickBorders {
+    stroke: cyan;
+} 
+
+.cardButton:hover + .svg .overlayShape {
+    stroke: cyan;
+}
+
+.thickBorders,
+.overlayShape {
+    transition: stroke 200ms;
+}

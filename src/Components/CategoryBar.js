@@ -5,11 +5,19 @@ export function CategoryBar({ steamData, activeCategory, setActiveCategory, setC
 
     let noDupesArr = [];
 
-    const categories = steamData ?
-        // filters out duplicate categories as well as categories with no data, 
-        // and generates a button for each passing category
+    const filteredCategories = steamData ?
+        // filters out: 
+        // 1) duplicate categories
+        // 2) categories with no data
+        // 3) categories whose items have no id
+
         Object.values(steamData)
             .filter(item => item.items?.length > 0)
+            .filter(item => {
+                if (item.items?.[0]?.id) {
+                    return true
+                }
+            })
             .filter(item => {
                 if (noDupesArr.includes(item.name)) return false
                 noDupesArr.push(item.name);
@@ -18,11 +26,11 @@ export function CategoryBar({ steamData, activeCategory, setActiveCategory, setC
             .map(item => ({ name: item.name, id: item.id }))
         : [];
 
-    const dailyDealCat = categories.find(item => item.name === 'Daily Deal')
+    const dailyDealCat = filteredCategories.find(item => item.name === 'Daily Deal')
 
     const categoriesMinusDailyDeal = noDupesArr.includes('Daily Deal') ?
-        categories.filter(item => item.name !== "Daily Deal")
-        : categories;
+        filteredCategories.filter(item => item.name !== "Daily Deal")
+        : filteredCategories;
 
     const orderedCategories = [dailyDealCat, ...categoriesMinusDailyDeal].filter(Boolean);
 

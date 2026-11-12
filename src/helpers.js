@@ -34,13 +34,19 @@ export async function getRecommendationData(id) {
         const response = await fetch(window.location.hostname === 'localhost' ?
             `http://localhost:5000/steam-reviews/?id=${id}` :
             'https://game-generator.onrender.com/steam-reviews');
+        if (!response.ok) {
+            console.warn(`Steam reviews request failed: ${response.status}`);
+            return null;
+        }
         if (response.ok) {
+
             const data = await response.json();
             return data;
         }
 
     } catch (error) {
         console.log(error.message)
+        return null
     }
 }
 
@@ -48,20 +54,25 @@ export async function getTags(id) {
     try {
         const response = await fetch(window.location.hostname === 'localhost' ?
             `http://localhost:5000/steam-tags/?id=${id}` :
-            'https://game-generator.onrender.com/steam-tags');
-        if (response.ok) {
-            const data = await response.json();
-            return data;
+            `https://game-generator.onrender.com/steam-tags?id=${id}`);
+
+        if (!response.ok) {
+            console.warn(`Steam tags request failed: ${response.status}`);
+            return null;
         }
+        const data = await response.json();
+        return data;
+
     } catch (error) {
         console.log(error.message)
+        return null
     }
 }
 
 export function formatPrice(price) {
     if (price) {
         return `$${(price / 100).toFixed(2)}`
-    } else {
+    } else if (price === 0) {
         return "Currently FREE!"
     }
 }
@@ -94,12 +105,10 @@ export function animateWithFLIP(id, gameRef, oldRectsRef) {
     const correction =
         oldGameCenter - invertedCenter;
 
-        const correctedDeltaX = deltaX + correction
+    const correctedDeltaX = deltaX + correction
 
     gameRef.current.style.transform =
         `translateX(${correctedDeltaX}px) rotateY(${oldSnapshot.rotateY}deg) scale(${scaling})`
-
-
 
     gameRef.current.getBoundingClientRect();
     gameRef.current.style.transition = "transform 500ms ease, opacity 500ms ease";

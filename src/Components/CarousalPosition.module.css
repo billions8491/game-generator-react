@@ -1,0 +1,67 @@
+.carousalPositionDiv {
+    display: flex;
+    gap: 2rem;
+}
+
+.carousalPositionNumbers {
+    font-size: 2vh;
+    text-shadow: 0px 0px 10px cyan;
+}
+
+.lineAndButtons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+}
+
+.linethrough {
+    position: absolute;
+    border: 1px solid rgba(0, 255, 255, .35);
+    left: 1.25vh;
+    width: calc(100% - 2.5vh);
+}
+
+.carousalDot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 2.5vh;
+    height: 2.5vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.carousalDot::after {
+    content: "";
+    box-sizing: border-box;
+    width: 1.5vh;
+    height: 1.5vh;
+    border: 2px solid cyan;
+    border-radius: 100%;
+    background-color: black;
+    filter: drop-shadow(0 0 3px cyan);
+    transition: background-color 150ms ease-in-out;
+}
+
+.currentGame::after {
+    background-color: cyan;
+}
+
+.carousalDot:hover::after {
+    background-color: cyan;
+}
+
+.tooltipVisibility {
+    opacity: 0;
+}
+
+.carousalDot:hover .tooltipVisibility {
+    opacity: 1;
+}

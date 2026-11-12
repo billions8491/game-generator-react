@@ -3,10 +3,14 @@
     position: relative;
     overflow: visible;
     width: 20%;
-    height: 80%;
+    height: 100%;
+    transition: transform .1s ease-in-out;
 }
 
-.buttonSVG {
+.steamButtonSVG,
+.browserButtonSVG,
+.steamOuterGlowSVG,
+.browserOuterGlowSVG {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -17,39 +21,69 @@
 .iconAndSpan {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 100%;
+    position: relative;
 }
 
 .steamSpan,
 .browserSpan {
-    font-size: 75%;
+    font-size: 70%;
+    z-index: 9;
 }
 
+.iconsWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5.5vh;
+    width: 5.5vh;
+}
+
+.steamImgRingSVG,
+.browserIconRingSVG {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
 
 /********************** Steam Button ******************************************/
+
+.steamOuterGlowSVG {
+    filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 4px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+}
+
+.brightSteamImgRing {
+    filter: drop-shadow(0 0 3px cyan);
+}
+
+.steamButtonFrame {
+    stroke: rgba(100, 255, 255);
+    transition:
+        stroke .1s ease-in-out,
+        filter .1s ease-in-out;
+}
+
+.steamButtonInnerFrame {
+    stroke: rgba(0, 225, 225, 0.3);
+    filter: drop-shadow(0 0 5px cyan)drop-shadow(0 0 5px cyan);
+}
+
+.steamButtonCornerAccents {
+    fill: rgba(100, 255, 255);
+}
+
+.steamBrightDivider {
+    filter: drop-shadow(0 0 1px cyan);
+}
 
 .steamButton:hover .steamSpan {
     color: white;
     text-shadow:
-        0 0 4px rgb(0, 255, 255),
-        0 0 8px rgb(0, 255, 255);
-}
-
-.steamButton:hover .steamButtonPath {
-    filter: drop-shadow(0 0 .5px cyan) drop-shadow(0 0 1.5px cyan);
-    stroke: rgb(198, 255, 255)
-}
-
-.steamButton:hover .steamImg {
-    filter: drop-shadow(0 0 5px cyan);
-}
-
-.steamButtonPath {
-    stroke: rgba(0, 255, 255, 0.7);
-    transition:
-        stroke .1s ease-in-out,
-        filter .1s ease-in-out;
+        0 0 8px rgb(0, 255, 255),
+        0 0 18px rgb(0, 255, 255);
 }
 
 .steamImg {
@@ -66,6 +100,38 @@
 /******************************************************************************/
 
 /********************** Browser Button ****************************************/
+
+.browserOuterGlowSVG {
+    filter: drop-shadow(0 0 1px rgba(200, 0, 0)) drop-shadow(0 0 3px rgba(200, 0, 0))drop-shadow(0 0 10px rgba(255, 0, 0));
+}
+
+.browserButtonFrame {
+    stroke: rgba(255, 165, 165)
+}
+
+.browserButtonInnerFrame {
+    stroke: rgba(255, 0, 0, 0.2);
+    filter: drop-shadow(0 0 5px red)drop-shadow(0 0 5px red);
+}
+
+.browserButtonCornerAccents {
+    fill: rgb(255, 175, 175);
+}
+
+.browserBrightDivider {
+    filter: drop-shadow(0 0 1px red);
+}
+
+.browserButtonPath {
+    stroke: transparent;
+    transition:
+        stroke .1s ease-in-out;
+}
+
+.brightBrowserIconRing {
+    filter: drop-shadow(0 0 4px red)drop-shadow(0 0 8px red);
+}
+
 .browserButton:hover .browserSpan {
     color: white;
     text-shadow:
@@ -73,26 +139,14 @@
         0 0 8px red;
 }
 
-.browserButton:hover .browserButtonPath {
-    filter: drop-shadow(0 0 1px red) drop-shadow(0 0 2px red);
-    stroke: rgb(255, 211, 211);
-}
-
 .browserButton:hover .browserButtonIcon {
-    filter: drop-shadow(0 0 0.5rem rgb(255, 0, 0));
-}
-
-.browserButtonPath {
-    stroke: rgba(255, 0, 0, 0.829);
-    transition:
-        stroke .1s ease-in-out,
-        filter .1s ease-in-out;
+    filter: drop-shadow(0 0 8px rgb(255, 0, 0));
 }
 
 .browserButtonIcon {
-    height: 85%;
+    height: 82%;
     fill: none;
-    stroke: rgb(255, 255, 255);
+    stroke: rgb(225, 225, 225);
     stroke-width: 1;
     transition: filter .1s ease-in-out;
 }
@@ -101,4 +155,13 @@
     color: rgb(217, 217, 217);
     transition:
         text-shadow .1s ease-in-out;
+}
+
+@media (min-aspect-ratio: 21 / 8) {
+
+    .steamButton,
+    .browserButton {
+        width: 18%;
+        height: 85%;
+    }
 }

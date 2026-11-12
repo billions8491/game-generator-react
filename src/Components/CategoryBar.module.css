@@ -4,7 +4,9 @@
     height: 5%;
     top: 1px;
     left: 1px;
+    z-index: 9;
 }
+
 
 .buttonsContainer {
     display: flex;
@@ -26,6 +28,12 @@ button {
     letter-spacing: 1px;
     color: rgba(234, 234, 234, 0.634);
     transition: text-shadow .25s ease-in-out;
+}
+
+@media (min-aspect-ratio: 21 / 8) {
+    button {
+        width: 9vw;
+    }
 }
 
 button:hover {

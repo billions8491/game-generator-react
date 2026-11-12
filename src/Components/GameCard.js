@@ -32,7 +32,7 @@ export function GameCard({ game, carouselPosition, ref }) {
                     className={styles.gameCardPath}
                     fill="none"
                     stroke="rgba(117, 255, 255)"
-                    strokeWidth="1"
+                    strokeWidth=".5"
                     vectorEffect="non-scaling-stroke"
                     strokeLinecap="round"
                 />
@@ -45,7 +45,7 @@ export function GameCard({ game, carouselPosition, ref }) {
                     M0,185 L0,205 L10,215 L40,215'
                     fill="none"
                     stroke="rgba(117, 255, 255)"
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeLinejoin='round'
                     strokeLinecap="round"
                 />

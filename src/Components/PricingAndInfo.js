@@ -2,10 +2,14 @@ import styles from './PricingAndInfo.module.css'
 import { useEffect, useState } from 'react'
 import { formatPrice, getRecommendationData, getTags } from '../helpers';
 import steamLogo from '../images/steam-logo.svg';
+import noiseSeed1 from '../images/noiseSeed1.png'
+import noiseSeed10 from '../images/noiseSeed10.png'
+
 
 export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
 
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState([]);
+    const [tagsStatus, setTagsStatus] = useState('loading')
     const [reviewData, setReviewData] = useState(null);
     const total = reviewData?.total_reviews;
     const percentage = reviewData ? (reviewData.total_positive / total) * 100 : null;
@@ -28,18 +32,45 @@ export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
         if (gameData) {
 
             getRecommendationData(gameData.steam_appid).then(response => {
-                setReviewData(response.query_summary)
-            })
+                if (!response?.query_summary) {
+                    setReviewData(null);
+                    return;
+                }
+                setReviewData(response.query_summary);
+            });
+
+            setTagsStatus('loading')
             getTags(gameData.steam_appid).then(response => {
+                if (!response) {
+                    setTagsStatus('error')
+                    setTags([])
+                    return;
+                }
+                setTagsStatus('success')
                 setTags(response.slice(0, 3))
             })
         }
     }, [gameData])
 
-
     return (
 
         <div className={styles.borderContainer} >
+            <div className={styles.smokeClip}>
+                <div className={styles.smokeClip}>
+                    <img
+                        src={noiseSeed1}
+                        className={styles.smokeLayer1}
+                        alt=""
+                        style={{ opacity: 0.1 }}
+                    />
+                    <img
+                        src={noiseSeed10}
+                        className={styles.smokeLayer2}
+                        alt=""
+                        style={{ opacity: .1 }}
+                    />
+                </div>
+            </div>
             <svg className={styles.mainSVG} viewBox='0 0 100 100' preserveAspectRatio='none' >
                 <defs>
                     <pattern id='verticalDash' x="1" y="1" width="2" height="3" patternUnits="userSpaceOnUse" >
@@ -66,6 +97,10 @@ export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
                         vectorEffect='non-scaling-stroke'
                         stroke='red'
                     />
+                    
+                    <clipPath id='noiseClip'>
+                        <use href="#innerPanelShape" />
+                    </clipPath>
                 </defs>
                 <path className={styles.outerBorderPath}
                     d='M5,0 L95,0 L100,5 L100,37 L99,38 L99,42 L100,43 L100,94 L94,100 L6,100 L0,94 L0,65 L1,64 L1,34 L0,33 L0,5 L5,0'
@@ -74,6 +109,7 @@ export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
                 <use href='#innerPanelShape' fill="url(#verticalRed)" />
                 <path d='M97,10 L97,25 L99,25 L99,10 L97,10    M97,64 L97,85 L99,85 L99,64' fill="url(#verticalDash)" />
             </svg>
+
             <div className={styles.allInfoContainer}>
                 {
                     activeData.name === 'Coming Soon' ?
@@ -175,7 +211,7 @@ export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
                             <path d='M0,115 L50,114.5 L100,115 L50,115.5'
                                 fill='rgba(255,0,0,.75' />
                         </svg>
-                    </div> 
+                    </div>
                     {/******************      REVIEWS       **************/}
                     {reviewData ?
                         <div className={styles.reviews} >
@@ -202,32 +238,38 @@ export function PricingAndInfo({ activeData, currentGameIndex, gameData }) {
                         : null}
                     <div className={styles.tagsContainer}>
                         {/******           TAGS         ************/}
-                        {tags?.map(tag => {
-                            return (
-                                <div className={styles.tagContainer} key={tag} >
-                                    <span>{tag}
-                                        <svg className={styles.leftTagSVG} viewBox='0 0 100 100' preserveAspectRatio='none' >
-                                            <path
-                                                d='M100,0 L50,25 L50,75 L100,100'
-                                                stroke='rgba(0,255,255,.8)'
-                                                vectorEffect="non-scaling-stroke"
-                                                strokeLinecap='round'
-                                                fill='none'
-                                                strokeWidth='2px' />
-                                        </svg>
-                                        <svg className={styles.rightTagSVG} viewBox='0 0 100 100' preserveAspectRatio='none'>
-                                            <path
-                                                d='M0,0 L50,25 L50,75 L0,100'
-                                                stroke='rgba(0,255,255,.8)'
-                                                vectorEffect="non-scaling-stroke"
-                                                strokeLinecap='round'
-                                                fill='none'
-                                                strokeWidth='2px' />
-                                        </svg>
-                                    </span>
-                                </div>
-                            )
-                        })}
+
+                        {tagsStatus === 'loading' ? null
+                            : tagsStatus === 'error' ? <span>Tags unavailable</span>
+                                : tags.length === 0 ? <div>No Tags</div>
+                                    :
+                                    tags.map(tag => {
+                                        return (
+                                            <div className={styles.tagContainer} key={tag} >
+                                                <span>{tag}
+                                                    <svg className={styles.leftTagSVG} viewBox='0 0 100 100' preserveAspectRatio='none' >
+                                                        <path
+                                                            d='M100,0 L50,25 L50,75 L100,100'
+                                                            stroke='rgba(0,255,255,.8)'
+                                                            vectorEffect="non-scaling-stroke"
+                                                            strokeLinecap='round'
+                                                            fill='none'
+                                                            strokeWidth='2px' />
+                                                    </svg>
+                                                    <svg className={styles.rightTagSVG} viewBox='0 0 100 100' preserveAspectRatio='none'>
+                                                        <path
+                                                            d='M0,0 L50,25 L50,75 L0,100'
+                                                            stroke='rgba(0,255,255,.8)'
+                                                            vectorEffect="non-scaling-stroke"
+                                                            strokeLinecap='round'
+                                                            fill='none'
+                                                            strokeWidth='2px' />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        )
+                                    })
+                        }
                     </div>
                 </div>
             </div>

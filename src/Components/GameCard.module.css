@@ -1,9 +1,18 @@
 .imgOverlay {
     width:100%;
     overflow: visible;
+    display: block;
 }
 
 .gameCardPath {
-    filter:
-        drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px rgb(0, 255, 255));
+    filter:drop-shadow(0 0 2px cyan) drop-shadow(0 0 6px rgb(0, 255, 255));
+}
+
+.thickBorders {
+    filter:drop-shadow(0 0 2px rgba(0, 255, 255, 0.616)) ;
+}
+
+.previous,
+.next {
+    opacity: .5;
 }

@@ -22,8 +22,13 @@ body::before {
   content: "";
   background:
     repeating-linear-gradient(0deg,
-      rgba(0, 255, 255, 0.125) 0px,
-      rgba(0, 255, 255, 0.125) 2px,
+      rgba(0, 255, 255, 0.025) 0px,
+      rgba(0, 255, 255, 0.025) 2px,
+      transparent 1px,
+      transparent 8px),
+      repeating-linear-gradient(90deg,
+      rgba(0, 255, 255, 0.025) 0px,
+      rgba(0, 255, 255, 0.025) 2px,
       transparent 1px,
       transparent 8px),
     #000;
@@ -31,7 +36,6 @@ body::before {
   height: 100%;
   width: 100%;
   z-index: -9;
-  opacity: .3;
 }
 
 #root {
