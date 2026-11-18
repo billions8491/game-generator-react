@@ -1,6 +1,6 @@
 import styles from './App.module.css';
-import { CategoryBar } from './Components/CategoryBar';
-import { GameDisplay } from './Components/GameDisplay.js';
+import { CategoryBar } from './Components/CategoryBar.jsx';
+import { GameDisplay } from './Components/GameDisplay.jsx';
 import { useEffect, useState } from 'react';
 import { getDeals } from './helpers.js';
 

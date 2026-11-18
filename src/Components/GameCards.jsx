@@ -61,6 +61,7 @@ export function GameCards({ activeData, currentGameIndex, setCurrentGameIndex, g
             setCurrentGameIndex(prev => prev === 0 ? gamesArray.length - 1 : prev - 1) :
             setCurrentGameIndex(prev => prev === gamesArray.length - 1 ? 0 : prev + 1)
     }
+    
 
     useLayoutEffect(() => {   // Runs AFTER indexes change
 

@@ -81,23 +81,24 @@ export function animateWithFLIP(id, gameRef, oldRectsRef) {
 
     if (!gameRef.current || !oldRectsRef.current[id]) return;
 
+    const newGame = gameRef.current
+
     const oldSnapshot = oldRectsRef.current[id];
-    const newGameRect = gameRef.current.getBoundingClientRect();
+    const newGameRect = newGame.getBoundingClientRect();
 
     const oldGameCenter = oldSnapshot.rect.x + oldSnapshot.rect.width / 2;
     const newGameCenter = newGameRect.x + newGameRect.width / 2;
     const deltaX = oldGameCenter - newGameCenter;
 
-    const scaling = oldSnapshot.width / gameRef.current.offsetWidth;
+    const scaling = oldSnapshot.width / newGame.offsetWidth;
 
-    gameRef.current.style.transition = "none";
+    newGame.style.transition = "none";
 
-    gameRef.current.style.opacity = oldSnapshot.opacity;
+    newGame.style.opacity = oldSnapshot.opacity;
 
-    gameRef.current.style.transform =
-        `translateX(${deltaX}px) rotateY(${oldSnapshot.rotateY}deg) scale(${scaling})`;
+    newGame.style.transform = `translateX(${deltaX}px) rotateY(${oldSnapshot.rotateY}deg) scale(${scaling})`;
 
-    const invertedRect = gameRef.current.getBoundingClientRect();
+    const invertedRect = newGame.getBoundingClientRect();
 
     const invertedCenter =
         invertedRect.x + invertedRect.width / 2;
@@ -107,11 +108,17 @@ export function animateWithFLIP(id, gameRef, oldRectsRef) {
 
     const correctedDeltaX = deltaX + correction
 
-    gameRef.current.style.transform =
-        `translateX(${correctedDeltaX}px) rotateY(${oldSnapshot.rotateY}deg) scale(${scaling})`
+    newGame.style.transform = `translateX(${correctedDeltaX}px) rotateY(${oldSnapshot.rotateY}deg) scale(${scaling})`
 
-    gameRef.current.getBoundingClientRect();
-    gameRef.current.style.transition = "transform 500ms ease, opacity 500ms ease";
-    gameRef.current.style.transform = "";
-    gameRef.current.style.opacity = "";
+    newGame.style.transition = "transform 500ms ease, opacity 500ms ease";
+
+    const clearTransition = (event) => {
+        if (event.target !== newGame || event.propertyName !== "transform") return;
+        newGame.style.transition = "";
+        newGame.removeEventListener("transitionend", clearTransition);
+    };
+    newGame.addEventListener("transitionend", clearTransition);
+
+    newGame.style.transform = "";
+    newGame.style.opacity = "";
 }

@@ -86,7 +86,7 @@
 
 .previousWrapper {
     transform: rotateY(70deg);
-    /* opacity: .5; */
+    opacity: .5;
 }
 
 .currentWrapper {
@@ -95,7 +95,7 @@
 
 .nextWrapper {
     transform: rotateY(-70deg);
-    /* opacity: .5; */
+    opacity: .5;
 }
 
 .nextNextWrapper {

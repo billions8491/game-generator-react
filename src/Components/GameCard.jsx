@@ -1,10 +1,10 @@
 import styles from './GameCard.module.css'
 
-export function GameCard({ game, carouselPosition, ref }) {
+export function GameCard({ game, carouselPosition }) {
 
      return (
         
-        <div ref={ref} className={`${styles.gameCard} ${styles[carouselPosition]}`}>
+        <div className={`${styles.gameCard} ${styles[carouselPosition]}`}>
             <svg className={styles.imgOverlay} viewBox='0 0 460 215' fill='none'>
                 <defs>
                     <path
